@@ -38,7 +38,7 @@
 }
 
 + (NSString *)getFilePath:(NSString *)fileName {
-    NSURL *directoryURL = [[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask][0];
+    NSURL *directoryURL = [[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask][0];
     NSURL *fileURL = [directoryURL URLByAppendingPathComponent:fileName];
     return [fileURL path];
 }
