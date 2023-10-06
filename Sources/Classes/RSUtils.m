@@ -38,8 +38,11 @@
 }
 
 + (NSString *)getFilePath:(NSString *)fileName {
-    NSURL *directoryURL = [[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask][0];
+    NSURL *directoryURL = [[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask][0];
     NSURL *fileURL = [directoryURL URLByAppendingPathComponent:fileName];
+    // tvOS, watchOS regularly clear data.
+    // we will try to create it, it will fail if already exists.
+    [[NSFileManager defaultManager] createDirectoryAtURL:fileURL withIntermediateDirectories:YES attributes:nil error:nil];
     return [fileURL path];
 }
 
