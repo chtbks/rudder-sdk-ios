@@ -38,9 +38,9 @@
 }
 
 + (NSString *)getFilePath:(NSString *)fileName {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *directory = [paths objectAtIndex:0];
-    return [directory stringByAppendingPathComponent:fileName];
+    NSURL *directoryURL = [[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask][0];
+    NSURL *fileURL = [directoryURL URLByAppendingPathComponent:fileName];
+    return [fileURL path];
 }
 
 + (BOOL)isFileExists:(NSString *)fileName {
