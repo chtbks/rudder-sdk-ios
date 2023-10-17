@@ -9,19 +9,19 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Rudder",
-            targets: ["Rudder"]
+            name: "RudderSDK",
+            targets: ["RudderSDK"]
         )
     ],
     targets: [
         .target(
-            name: "Rudder",
+            name: "RudderSDK",
             path: "Sources",
             sources: ["Classes/"]
         ),
         .testTarget(
             name: "RudderTests",
-            dependencies: ["Rudder"]
+            dependencies: ["RudderSDK"]
         )
     ]
 )
